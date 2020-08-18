@@ -1,14 +1,14 @@
 
-import Navbar from './Navbar'
+// import Navbar from './Navbar'
 
-const Layout = ({children, menus}) => {
-    return (
-        <div>
-            <Navbar menus={menus}/>
-            {children}
+// const Layout = ({children, menus}) => {
+//     return (
+//         <div>
+//             <Navbar menus={menus}/>
+//             {children}
             
-        </div>
-    );
-};
+//         </div>
+//     );
+// };
 
-export default Layout;
+// export default Layout;

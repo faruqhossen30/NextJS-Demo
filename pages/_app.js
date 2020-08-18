@@ -1,29 +1,23 @@
+
 import '../styles/globals.css'
 import Layout from '../components/Layout'
-import fetch from 'isomorphic-unfetch'
+import Head from 'next/head'
+import dynamic from 'next/dynamic'
 
-function MyApp({ Component, pageProps, menus }) {
+const DynamicComponent = dynamic(() => import('../components/Navbar'))
+
+function MyApp({ Component, pageProps }) {
   return (
-    <Layout menus={menus}>
-      <p>Menu</p>
-      <Component {...pageProps} />
-    </Layout>
+    <>
+      <Head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+        <DynamicComponent />
+        <Component {...pageProps} />
+    </>
   )
 }
 
-// MyApp.getInitialProps = async (context) {
-
-//   const res = await fetch('http://hometoos.com/kidsrctoys/wp-json/menus/v1/menus/mainMenu')
-//   const menus = await res.json()
-
-//   return {
-//     menus, // will be passed to the page component as props
-//   }
-// }
-MyApp.getInitialProps = async (ctx) => {
-  const res = await fetch('http://hometoos.com/kidsrctoys/wp-json/menus/v1/menus/mainMenu')
-  const menus = await res.json()
-  return { menus: menus.items }
-}
 
 export default MyApp

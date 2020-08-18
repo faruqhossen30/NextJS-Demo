@@ -1,6 +1,18 @@
 import Link from 'next/link'
+import Axios from 'axios'
+import {useState, useEffect} from 'react'
 
-const Navbar = ({ menus }) => {
+const Navbar = () => {
+
+    const [menus, setMenus] = useState([])
+    useEffect(()=>{
+        Axios.get('http://hometoos.com/kidsrctoys/wp-json/menus/v1/menus/mainMenu')
+        .then(data =>{
+            setMenus(data.data.items)
+        })
+        .catch(e => console.log(e))
+    }, [])
+
     return (
         <div>
             <ul className="nav bg-secondary">
