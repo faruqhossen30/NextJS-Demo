@@ -6,7 +6,7 @@ const Navbar = () => {
 
     const [menus, setMenus] = useState([])
     useEffect(()=>{
-        Axios.get('http://hometoos.com/kidsrctoys/wp-json/menus/v1/menus/mainMenu')
+        Axios.get('https://hometoos.com/kidsrctoys/wp-json/menus/v1/menus/mainMenu')
         .then(data =>{
             setMenus(data.data.items)
         })
